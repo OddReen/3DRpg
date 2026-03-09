@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "dotnet",
+			"task": "watch Unity.AI.Generators.Tools",
+			"file": "/home/leonardo/Documentos/GitHub/3DRpg/Unity.AI.Generators.Tools.csproj",
+			"problemMatcher": [],
+			"label": "dotnet: watch Unity.AI.Generators.Tools"
+		}
+	]
+}
