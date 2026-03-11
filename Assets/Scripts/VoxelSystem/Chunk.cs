@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using Unity.VisualScripting;
 
 [RequireComponent(typeof(MeshRenderer), typeof(MeshFilter))]
 public class Chunk : MonoBehaviour
@@ -34,7 +35,14 @@ public class Chunk : MonoBehaviour
             {
                 for (int z = 0; z < VoxelData.ChunkWidth; z++)
                 {
-                    _voxelMap[x, y, z] = 0;
+                    if (y > VoxelData.ChunkHeight * .75f)
+                    {
+                        _voxelMap[x, y, z] = 1;
+                    }
+                    else
+                    {
+                        _voxelMap[x, y, z] = 1;
+                    }
                 }
             }
         }
@@ -48,7 +56,7 @@ public class Chunk : MonoBehaviour
             {
                 for (int z = 0; z < VoxelData.ChunkWidth; z++)
                 {
-                    AddVoxelToDataChunk(new Vector3Int(x, y, z));
+                    CreateVoxelMeshData(new Vector3Int(x, y, z));
                 }
             }
         }
@@ -61,6 +69,7 @@ public class Chunk : MonoBehaviour
 
         mesh.vertices = _vertices.ToArray();
         mesh.triangles = _triangles.ToArray();
+        Debug.Log(_uvs.Count);
         mesh.uv = _uvs.ToArray();
 
         mesh.RecalculateNormals();
@@ -81,22 +90,25 @@ public class Chunk : MonoBehaviour
         return false;
     }
 
-    private void AddVoxelToDataChunk(Vector3Int InCoordinate)
+    private void CreateVoxelMeshData(Vector3Int InVoxelPos)
     {
         // Voxel representation
         int faceNum = 6;
         for (int faceIndex = 0; faceIndex < faceNum; faceIndex++)
         {
-            // If there isnt a voxel in given direction, draw face
-            if (!CheckVoxel(InCoordinate + VoxelData.faceDirections[faceIndex]))
+            // If there isnt a voxel in given neighbour, draw face
+            if (!CheckVoxel(InVoxelPos + VoxelData.faceDirections[faceIndex]))
             {
+
                 int verticesNum = 4;
                 for (int verticeIndex = 0; verticeIndex < verticesNum; verticeIndex++)
                 {
-                    _vertices.Add(VoxelData.vertices[VoxelData.faces[faceIndex, verticeIndex]] + InCoordinate);
-                    _uvs.Add(VoxelData.uvs[verticeIndex]);
+                    _vertices.Add(VoxelData.vertices[VoxelData.faces[faceIndex, verticeIndex]] + InVoxelPos);
                 }
-
+                
+                byte blockID = _voxelMap[InVoxelPos.x, InVoxelPos.y, InVoxelPos.z];
+                AddTexture(_world.blockTypes[blockID].GetTextureID(faceNum));
+                
                 for (int t = 0; t < VoxelData.triangles.Length; t++)
                 {
                     _triangles.Add(_vertexIndex + VoxelData.triangles[t]);
@@ -104,5 +116,21 @@ public class Chunk : MonoBehaviour
                 _vertexIndex += 4;
             }
         }
+    }
+
+    void AddTexture(int InTextureID)
+    {
+        float y = InTextureID / VoxelData.TextureAtlasSizeInBlocks;
+        float x = InTextureID - (y * VoxelData.TextureAtlasSizeInBlocks);
+
+        x *= VoxelData.NormalizedBlockTextureSize;
+        y *= VoxelData.NormalizedBlockTextureSize;
+
+        y = 1f - y - VoxelData.NormalizedBlockTextureSize;
+
+        _uvs.Add(new Vector2(x, y));
+        _uvs.Add(new Vector2(x, y + VoxelData.NormalizedBlockTextureSize));
+        _uvs.Add(new Vector2(x + VoxelData.NormalizedBlockTextureSize, y));
+        _uvs.Add(new Vector2(x + VoxelData.NormalizedBlockTextureSize, y + VoxelData.NormalizedBlockTextureSize));
     }
 }

@@ -255,6 +255,15 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.postprocessing": {
+      "version": "file:com.unity.postprocessing",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.modules.imgui": "1.0.0"
+      }
+    },
     "com.unity.probuilder": {
       "version": "file:com.unity.probuilder",
       "depth": 0,

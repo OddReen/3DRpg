@@ -42,17 +42,5 @@ namespace LNeves
                 mesh.RecalculateNormals();
             }
         }
-
-        void OnDrawGizmos()
-        {
-            // foreach(Vector3 Vertice in Voxel.vertices)
-            // {
-            //     Handles.Label(Vertice, Vertice.ToString());
-            // }
-            // for (int i = 0; i < meshWrap.vertices.Length; i++)
-            // {
-            //     Handles.Label(meshWrap.vertices[i], i.ToString());
-            // }
-        }
     }
 }

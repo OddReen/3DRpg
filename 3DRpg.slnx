@@ -33,6 +33,7 @@
   <Project Path="Autodesk.Fbx.csproj" />
   <Project Path="Unity.Burst.CodeGen.csproj" />
   <Project Path="Unity.InputSystem.csproj" />
+  <Project Path="Unity.Postprocessing.Editor.csproj" />
   <Project Path="Unity.AI.Assistant.Editor.csproj" />
   <Project Path="Unity.VisualScripting.Flow.csproj" />
   <Project Path="Unity.AI.Pbr.csproj" />
@@ -59,6 +60,7 @@
   <Project Path="Unity.Collections.csproj" />
   <Project Path="Unity.Burst.Editor.csproj" />
   <Project Path="glTFast.Newtonsoft.csproj" />
+  <Project Path="Unity.Postprocessing.Runtime.csproj" />
   <Project Path="Unity.VisualScripting.State.csproj" />
   <Project Path="Unity.AI.Animate.csproj" />
   <Project Path="Unity.2D.Common.Path.Editor.csproj" />
@@ -119,6 +121,7 @@
   <Project Path="Unity.PlasticSCM.Editor.Entities.csproj" />
   <Project Path="Unity.Collections.Editor.csproj" />
   <Project Path="Unity.VisualScripting.DocCodeExamples.csproj" />
+  <Project Path="Unity.Postprocessing.Editor.Tests.csproj" />
   <Project Path="Autodesk.Fbx.BuildTestAssets.csproj" />
   <Project Path="Unity.InternalAPIEngineBridge.001.csproj" />
   <Project Path="Unity.ProBuilder.AddOns.Editor.csproj" />
@@ -126,4 +129,5 @@
   <Project Path="Unity.InferenceEngine.MacBLAS.csproj" />
   <Project Path="Unity.InferenceEngine.ONNX.Editor.csproj" />
   <Project Path="Unity.InferenceEngine.iOSBLAS.csproj" />
+  <Project Path="Unity.Postprocessing.Runtime.Tests.csproj" />
 </Solution>
