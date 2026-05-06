@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 using Unity.VisualScripting;
+using System.Collections;
 
 [RequireComponent(typeof(MeshRenderer), typeof(MeshFilter))]
 public class Chunk : MonoBehaviour
@@ -23,8 +24,8 @@ public class Chunk : MonoBehaviour
         _world = GameObject.Find("World").GetComponent<World>();
 
         PopulateVoxelMap();
-        CreateMeshData();
-        CreateMesh();
+        StartCoroutine(CreateMeshData());
+        // CreateMesh();
     }
 
     void PopulateVoxelMap()
@@ -35,20 +36,24 @@ public class Chunk : MonoBehaviour
             {
                 for (int z = 0; z < VoxelData.ChunkWidth; z++)
                 {
-                    if (y > VoxelData.ChunkHeight * .75f)
+                    if (y == VoxelData.ChunkHeight - 1)
+                    {
+                        _voxelMap[x, y, z] = 2;
+                    }
+                    else if (y > VoxelData.ChunkHeight * .75f)
                     {
                         _voxelMap[x, y, z] = 1;
                     }
                     else
                     {
-                        _voxelMap[x, y, z] = 1;
+                        _voxelMap[x, y, z] = 0;
                     }
                 }
             }
         }
     }
 
-    private void CreateMeshData()
+    public IEnumerator CreateMeshData()
     {
         for (int y = 0; y < VoxelData.ChunkHeight; y++)
         {
@@ -57,6 +62,8 @@ public class Chunk : MonoBehaviour
                 for (int z = 0; z < VoxelData.ChunkWidth; z++)
                 {
                     CreateVoxelMeshData(new Vector3Int(x, y, z));
+                    CreateMesh();
+                    yield return null;
                 }
             }
         }
@@ -105,10 +112,10 @@ public class Chunk : MonoBehaviour
                 {
                     _vertices.Add(VoxelData.vertices[VoxelData.faces[faceIndex, verticeIndex]] + InVoxelPos);
                 }
-                
+
                 byte blockID = _voxelMap[InVoxelPos.x, InVoxelPos.y, InVoxelPos.z];
-                AddTexture(_world.blockTypes[blockID].GetTextureID(faceNum));
-                
+                AddTexture(_world.blockTypes[blockID].GetTextureID(faceIndex));
+
                 for (int t = 0; t < VoxelData.triangles.Length; t++)
                 {
                     _triangles.Add(_vertexIndex + VoxelData.triangles[t]);

@@ -423,7 +423,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832575517}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
@@ -584,6 +584,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::World
   _material: {fileID: 2100000, guid: 1ae0e5d6edfffa60c81c23cec0d42bdf, type: 2}
   blockTypes:
+  - blockName: Stone
+    isSolid: 1
+    BackFace: 3
+    FrontFace: 3
+    TopFace: 3
+    BottomFace: 3
+    LeftFace: 3
+    RightFace: 3
+  - blockName: Dirt
+    isSolid: 1
+    BackFace: 2
+    FrontFace: 2
+    TopFace: 2
+    BottomFace: 2
+    LeftFace: 2
+    RightFace: 2
   - blockName: Grass
     isSolid: 1
     BackFace: 1
@@ -592,14 +608,6 @@ MonoBehaviour:
     BottomFace: 2
     LeftFace: 1
     RightFace: 1
-  - blockName: Stone
-    isSolid: 1
-    BackFace: 2
-    FrontFace: 2
-    TopFace: 2
-    BottomFace: 2
-    LeftFace: 2
-    RightFace: 2
 --- !u!4 &1992395387
 Transform:
   m_ObjectHideFlags: 0
