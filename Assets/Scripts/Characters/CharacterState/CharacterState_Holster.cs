@@ -17,8 +17,20 @@ public class CharacterState_Holster : CharacterState
         InBehaviour.hasWeapon = true;
         InBehaviour.inventory.rightWeapon = target;
 
-        Transform slot = InBehaviour.isWeaponHolstered ? InBehaviour.characterSlots.rightHandSlot : InBehaviour.characterSlots.holsterSlot;
+        Transform slot;
+        if (InBehaviour.isWeaponHolstered)
+        {
+            InBehaviour.ChangeMovementStance(1);
+            slot = InBehaviour.characterSlots.rightHandSlot;
+        }
+        else
+        {
+            InBehaviour.ChangeMovementStance(0);
+            slot = InBehaviour.characterSlots.holsterSlot;
+        }
         InBehaviour.isWeaponHolstered = !InBehaviour.isWeaponHolstered;
+
+        InBehaviour.PlayMovementStance();
 
         target.transform.SetParent(slot);
         target.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.Euler(Vector3.zero));

@@ -58,7 +58,9 @@ public class CharacterBehaviour_Player : CharacterBehaviour
     public float doubleClickTimer = .25f;
 
     [SerializeField] public CameraData cameraData;
-    [SerializeField] public GameObject dialogUI;
+    [SerializeField] public GameObject socialOptions;
+    [SerializeField] public GameObject socialOptionsFrontPanel;
+    [SerializeField] public GameObject socialOptionPref;
 
     void Start()
     {

@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3643846341008020055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5589326420412576145}
+  m_Layer: 0
+  m_Name: RightHandSlot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5589326420412576145
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3643846341008020055}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.00075, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5074001061596206089}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3864150341689149141
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5508053824120125303}
+  m_Layer: 0
+  m_Name: Holster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5508053824120125303
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3864150341689149141}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: -0.00173}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4613661635652276001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &479008514624284965
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66,6 +128,22 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 35d345b5214dfd44dbb068dcd6758841, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5089845367381927428, guid: 9c239827bf0914241a2fda6fc415aa1c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5508053824120125303}
+    - targetCorrespondingSourceObject: {fileID: 4670160940878331180, guid: 9c239827bf0914241a2fda6fc415aa1c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5589326420412576145}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c239827bf0914241a2fda6fc415aa1c, type: 3}
+--- !u!4 &4613661635652276001 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5089845367381927428, guid: 9c239827bf0914241a2fda6fc415aa1c, type: 3}
+  m_PrefabInstance: {fileID: 479008514624284965}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5074001061596206089 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4670160940878331180, guid: 9c239827bf0914241a2fda6fc415aa1c, type: 3}
+  m_PrefabInstance: {fileID: 479008514624284965}
+  m_PrefabAsset: {fileID: 0}

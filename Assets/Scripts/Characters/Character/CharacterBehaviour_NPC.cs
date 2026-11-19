@@ -9,7 +9,7 @@ public class CharacterBehaviour_NPC : CharacterBehaviour
 
     void Start()
     {
-        ChangeState(new CharacterState_Follow(GameObject.FindGameObjectWithTag("Player").transform, followStoppingDistance, followMaxDistance));
+        //ChangeState(new CharacterState_Follow(GameObject.FindGameObjectWithTag("Player").transform, followStoppingDistance, followMaxDistance));
     }
     private void Update()
     {

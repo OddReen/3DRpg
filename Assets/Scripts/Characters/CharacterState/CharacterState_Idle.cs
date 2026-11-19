@@ -10,7 +10,7 @@ public class CharacterState_Idle : CharacterState
     public override void Enter(CharacterBehaviour InBehaviour)
     {
         base.Enter(InBehaviour);
-        InBehaviour.animator.Play("Movement");
+        InBehaviour.PlayMovementStance();
     }
     public override void Update(CharacterBehaviour InBehaviour)
     {

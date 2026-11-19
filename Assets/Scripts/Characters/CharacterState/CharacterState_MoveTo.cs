@@ -17,7 +17,7 @@ public class CharacterState_MoveTo : CharacterState
     public override void Enter(CharacterBehaviour InBehaviour)
     {
         base.Enter(InBehaviour);
-        InBehaviour.animator.Play("Movement");
+        InBehaviour.PlayMovementStance();
         InBehaviour.agent.stoppingDistance = stoppingDistance;
         InBehaviour.agent.SetDestination(destination);
     }

@@ -40,6 +40,7 @@ public abstract class CharacterBehaviour : MonoBehaviour
     public float animationSmoothSpeed = 1f;
     public bool isSprinting = false;
     private Vector3 currentVelocity;
+    public int movementStanceIndex = 0;
 
     [Header("State")]
     public CharacterState _state;
@@ -49,6 +50,21 @@ public abstract class CharacterBehaviour : MonoBehaviour
     public bool hasWeapon = false;
     public bool isWeaponHolstered = false;
 
+    public void ChangeMovementStance(int InIndex)
+    {
+        movementStanceIndex = InIndex;
+    }
+    public void PlayMovementStance()
+    {
+        if (movementStanceIndex == 0)
+        {
+            animator.Play("Movement");
+        }
+        else if (movementStanceIndex == 1)
+        {
+            animator.Play("Movement_Weapon");
+        }
+    }
     public void ApplyAnimation()
     {
         Vector3 velocityTarget = transform.InverseTransformDirection(agent.velocity / agent.speed);
@@ -81,4 +97,5 @@ public abstract class CharacterBehaviour : MonoBehaviour
         _state = InState;
         _state?.Enter(this);
     }
+
 }
