@@ -1,7 +1,6 @@
 using System;
 using Unity.Behavior;
 using Unity.Properties;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using Action = Unity.Behavior.Action;
 
@@ -12,21 +11,37 @@ public partial class Action_SitInChairAction : Action
     [SerializeReference] public BlackboardVariable<CharacterBehaviour> Agent;
     [SerializeReference] public BlackboardVariable<Structure_Chair> Target;
 
-    bool wasSat = false;
+    private CharacterBehaviour sittingAgent;
+    private Structure_Chair occupiedChair;
+    private bool wasSat;
 
     protected override Status OnStart()
     {
-        if (Target.Value.ocuppied)
+        wasSat = false;
+
+        sittingAgent = Agent.Value;
+        occupiedChair = Target.Value;
+
+        if (sittingAgent == null || occupiedChair == null)
             return Status.Failure;
 
+        if (occupiedChair.ocuppied)
+            return Status.Failure;
+
+        // Reserve chair
+        occupiedChair.ocuppied = true;
         wasSat = true;
 
-        Target.Value.ocuppied = true;
-        Agent.Value.agent.enabled = false;
-        Agent.Value.animator.CrossFade("SatInChair", .1f);
+        // Disable navigation
+        sittingAgent.agent.enabled = false;
 
-        Vector3 rotate = new Vector3(0.0f, Target.Value.transform.rotation.eulerAngles.y, 0.0f);
-        Agent.Value.transform.SetPositionAndRotation(Target.Value.transform.position, Quaternion.Euler(rotate));
+        // Sit
+        sittingAgent.animator.CrossFade("SatInChair", .1f);
+
+        Vector3 rotate = new Vector3( 0f, occupiedChair.transform.rotation.eulerAngles.y, 0f );
+
+        sittingAgent.transform.SetPositionAndRotation( occupiedChair.transform.position, Quaternion.Euler(rotate) );
+
         return Status.Running;
     }
 
@@ -40,8 +55,17 @@ public partial class Action_SitInChairAction : Action
         if (!wasSat)
             return;
 
-        Target.Value.ocuppied = false;
-        Agent.Value.agent.enabled = true;
+        wasSat = false;
+
+        // Release chair
+        if (occupiedChair != null)
+            occupiedChair.ocuppied = false;
+
+        // Re-enable navigation
+        if (sittingAgent != null && sittingAgent.agent != null)
+            sittingAgent.agent.enabled = true;
+
+        // Play your standing/idle animation here.
+        sittingAgent.PlayMovementStance();
     }
 }
-

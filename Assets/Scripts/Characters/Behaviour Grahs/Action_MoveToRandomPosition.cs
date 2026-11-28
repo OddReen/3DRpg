@@ -23,6 +23,10 @@ public partial class Action_MoveToRandomPosition : Action
         {
             Agent.Value.agent.SetDestination(hit.position);
         }
+        else
+        {
+            return Status.Failure;
+        }
         return Status.Running;
     }
 
