@@ -5,8 +5,6 @@ TagManager:
   serializedVersion: 3
   tags:
   - NPC
-  - Item
-  - Chair
   layers:
   - Default
   - TransparentFX

@@ -23,7 +23,7 @@ public class CharacterState_Follow : CharacterState
     public override void Update(CharacterBehaviour InBehaviour)
     {
         base.Update(InBehaviour);
-        InBehaviour.RotateToMoveDirection();
+        InBehaviour.RotateToMoveDirectionSmoothed(InBehaviour.agent.velocity.normalized);
         if (Vector3.Distance(InBehaviour.transform.position, target.position) > maxDistance)
         {
             InBehaviour.agent.SetDestination(target.position);

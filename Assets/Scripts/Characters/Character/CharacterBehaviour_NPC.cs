@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 public class CharacterBehaviour_NPC : CharacterBehaviour
 {
@@ -9,11 +8,11 @@ public class CharacterBehaviour_NPC : CharacterBehaviour
 
     void Start()
     {
-        //ChangeState(new CharacterState_Follow(GameObject.FindGameObjectWithTag("Player").transform, followStoppingDistance, followMaxDistance));
+        //ChangeState(new CharacterState_MoveToTarget(GameObject.FindGameObjectWithTag("Player").transform, 1.0f, new CharacterState_Attack(GameObject.FindGameObjectWithTag("Player"))));
     }
     private void Update()
     {
-        _state?.Update(this);
-        ApplyAnimation();
+        //_state?.Update(this);
+        ApplyAnimation(agent.velocity);
     }
 }

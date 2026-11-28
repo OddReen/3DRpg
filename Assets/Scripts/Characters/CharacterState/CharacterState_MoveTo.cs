@@ -25,7 +25,7 @@ public class CharacterState_MoveTo : CharacterState
     {
         base.Update(InBehaviour);
 
-        InBehaviour.RotateToMoveDirection();
+        InBehaviour.RotateToMoveDirectionSmoothed(InBehaviour.agent.velocity.normalized);
 
         if (InBehaviour.HasArrived())
         {

@@ -76,7 +76,7 @@ public class CharacterBehaviour_Player : CharacterBehaviour
         playerController?.Update(this);
         cameraBehaviour?.Update(this);
         _state?.Update(this);
-        ApplyAnimation();
+        ApplyAnimation(agent.velocity);
     }
     private void LateUpdate()
     {

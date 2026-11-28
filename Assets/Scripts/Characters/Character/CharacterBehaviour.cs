@@ -22,7 +22,7 @@ using UnityEngine.AI;
     [SerializeField] public GameObject legs;
     [SerializeField] public GameObject feet;
 }
-public abstract class CharacterBehaviour : MonoBehaviour
+public abstract class CharacterBehaviour : InteractionObject
 {
     [Header("Character Data")]
     [SerializeField] public CharacterSlots characterSlots;
@@ -41,6 +41,7 @@ public abstract class CharacterBehaviour : MonoBehaviour
     public bool isSprinting = false;
     private Vector3 currentVelocity;
     public int movementStanceIndex = 0;
+    public float rotationSpeed = 2.5f;
 
     [Header("State")]
     public CharacterState _state;
@@ -58,16 +59,16 @@ public abstract class CharacterBehaviour : MonoBehaviour
     {
         if (movementStanceIndex == 0)
         {
-            animator.Play("Movement");
+            animator.CrossFade("Movement", .1f);
         }
         else if (movementStanceIndex == 1)
         {
-            animator.Play("Movement_Weapon");
+            animator.CrossFade("Movement_Weapon", .1f);
         }
     }
-    public void ApplyAnimation()
+    public void ApplyAnimation(Vector3 InVelocity)
     {
-        Vector3 velocityTarget = transform.InverseTransformDirection(agent.velocity / agent.speed);
+        Vector3 velocityTarget = transform.InverseTransformDirection(InVelocity / agent.speed);
         if (isSprinting)
         {
             velocityTarget *= 2;
@@ -76,7 +77,9 @@ public abstract class CharacterBehaviour : MonoBehaviour
 
         animator.SetFloat("VelocityY", currentVelocity.z);
         animator.SetFloat("VelocityX", currentVelocity.x);
-        animator.SetFloat("VelocityMultiplier", currentVelocity.magnitude * speedMultiplier);
+
+        animator.SetFloat("VelocityMultiplier", Mathf.Max(1.0f, currentVelocity.magnitude * speedMultiplier));
+
     }
     public bool HasArrived()
     {
@@ -89,6 +92,13 @@ public abstract class CharacterBehaviour : MonoBehaviour
     {
         Vector3 lookAt = agent.desiredVelocity.normalized;
         lookAt = new Vector3(lookAt.x, 0f, lookAt.z).normalized;
+        gameObject.transform.LookAt(transform.position + lookAt);
+    }
+    public void RotateToMoveDirectionSmoothed(Vector3 InDirection)
+    {
+        Vector3 lookAtTarget = new Vector3(InDirection.x, 0f, InDirection.z).normalized;
+        Vector3 lookAt = Vector3.RotateTowards(agent.transform.forward, lookAtTarget, Time.deltaTime * rotationSpeed, 0.0f); 
+
         gameObject.transform.LookAt(transform.position + lookAt);
     }
     public void ChangeState(CharacterState InState)

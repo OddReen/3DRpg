@@ -15,6 +15,7 @@ public class CharacterState_Idle : CharacterState
     public override void Update(CharacterBehaviour InBehaviour)
     {
         base.Update(InBehaviour);
+        InBehaviour.RotateToMoveDirectionSmoothed(InBehaviour.agent.velocity.normalized);
     }
     public override void Exit(CharacterBehaviour InBehaviour)
     {

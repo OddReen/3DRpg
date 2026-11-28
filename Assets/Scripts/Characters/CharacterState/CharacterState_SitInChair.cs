@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class CharacterState_SitInChair : CharacterState
 {
-    GameObject target;
+    Structure_Chair target;
 
-    public CharacterState_SitInChair(GameObject InTarget)
+    public CharacterState_SitInChair(Structure_Chair InTarget)
     {
         name = "SitInChair";
         target = InTarget;
@@ -13,8 +13,10 @@ public class CharacterState_SitInChair : CharacterState
     public override void Enter(CharacterBehaviour InBehaviour)
     {
         base.Enter(InBehaviour);
+
+        target.ocuppied = true;
         InBehaviour.agent.enabled = false;
-        InBehaviour.animator.Play("SatInChair");
+        InBehaviour.animator.CrossFade("SatInChair", .1f);
 
         Vector3 rotate = new Vector3(0.0f, target.transform.rotation.eulerAngles.y, 0.0f);
         InBehaviour.transform.SetPositionAndRotation(target.transform.position, Quaternion.Euler(rotate));
@@ -25,7 +27,8 @@ public class CharacterState_SitInChair : CharacterState
     }
     public override void Exit(CharacterBehaviour InBehaviour)
     {
-        InBehaviour.agent.enabled = true;
         base.Enter(InBehaviour);
+        target.ocuppied = false;
+        InBehaviour.agent.enabled = true;
     }
 }

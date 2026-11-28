@@ -29,7 +29,7 @@ public class CharacterState_MoveToTarget : CharacterState
         if (target == null)
             return;
 
-        InBehaviour.RotateToMoveDirection();
+        InBehaviour.RotateToMoveDirectionSmoothed(InBehaviour.agent.velocity.normalized);
 
         InBehaviour.agent.SetDestination(target.position);
 

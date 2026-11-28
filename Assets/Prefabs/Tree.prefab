@@ -64,33 +64,52 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: d8ae3db61cb9d8f4b9a724a050d92b8b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 205ce7c269aaadf48a0883ae219b1c87, type: 2}
+    - target: {fileID: -1461304994638716399, guid: d8ae3db61cb9d8f4b9a724a050d92b8b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 205ce7c269aaadf48a0883ae219b1c87, type: 2}
+    - target: {fileID: -804731622281664130, guid: d8ae3db61cb9d8f4b9a724a050d92b8b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d5cff3f70ca674b4c8c047a13d118e12, type: 2}
+    - target: {fileID: -678588488315902003, guid: d8ae3db61cb9d8f4b9a724a050d92b8b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d5cff3f70ca674b4c8c047a13d118e12, type: 2}
     - target: {fileID: 919132149155446097, guid: d8ae3db61cb9d8f4b9a724a050d92b8b, type: 3}
       propertyPath: m_Name
-      value: Tree 1
+      value: Tree
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: d8ae3db61cb9d8f4b9a724a050d92b8b, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d8ae3db61cb9d8f4b9a724a050d92b8b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 9166762175073556983}
-    - targetCorrespondingSourceObject: {fileID: -516098083770646512, guid: d8ae3db61cb9d8f4b9a724a050d92b8b, type: 3}
+      addedObject: {fileID: 2978378612168698597}
+    - targetCorrespondingSourceObject: {fileID: -7146521406498821007, guid: d8ae3db61cb9d8f4b9a724a050d92b8b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3943545669170910981}
+      addedObject: {fileID: 3437294230271830081}
+    - targetCorrespondingSourceObject: {fileID: -7146521406498821007, guid: d8ae3db61cb9d8f4b9a724a050d92b8b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1263234850496940901}
   m_SourcePrefab: {fileID: 100100000, guid: d8ae3db61cb9d8f4b9a724a050d92b8b, type: 3}
---- !u!1 &1771787615228124837 stripped
+--- !u!1 &1137352814346911920 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: -8391222552659086748, guid: d8ae3db61cb9d8f4b9a724a050d92b8b, type: 3}
+  m_CorrespondingSourceObject: {fileID: -7146521406498821007, guid: d8ae3db61cb9d8f4b9a724a050d92b8b, type: 3}
   m_PrefabInstance: {fileID: 1376629234983365825}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &9166762175073556983
+--- !u!64 &3437294230271830081
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1771787615228124837}
+  m_GameObject: {fileID: 1137352814346911920}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -105,31 +124,57 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: -5495902117074765545, guid: d8ae3db61cb9d8f4b9a724a050d92b8b, type: 3}
---- !u!1 &7767785184087157969 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -516098083770646512, guid: d8ae3db61cb9d8f4b9a724a050d92b8b, type: 3}
-  m_PrefabInstance: {fileID: 1376629234983365825}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &3943545669170910981
-MeshCollider:
+  m_Mesh: {fileID: -8678823145569952518, guid: d8ae3db61cb9d8f4b9a724a050d92b8b, type: 3}
+--- !u!208 &1263234850496940901
+NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7767785184087157969}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_GameObject: {fileID: 1137352814346911920}
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4493585093827132993, guid: d8ae3db61cb9d8f4b9a724a050d92b8b, type: 3}
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.004, y: 0.004, z: 0.006}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0.006}
+  m_TimeToStationary: 0.5
+--- !u!1 &2295618853500408208 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d8ae3db61cb9d8f4b9a724a050d92b8b, type: 3}
+  m_PrefabInstance: {fileID: 1376629234983365825}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2978378612168698597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2295618853500408208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c28f0a65af7e84f4cbcb8bd97bdddde0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Structure
+  defaultVisual:
+  - {fileID: 8692688520719355600}
+  - {fileID: 7318331405675203340}
+  cuttoutVisual:
+  - {fileID: 7480408769906165183}
+--- !u!23 &7318331405675203340 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -678588488315902003, guid: d8ae3db61cb9d8f4b9a724a050d92b8b, type: 3}
+  m_PrefabInstance: {fileID: 1376629234983365825}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7480408769906165183 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -804731622281664130, guid: d8ae3db61cb9d8f4b9a724a050d92b8b, type: 3}
+  m_PrefabInstance: {fileID: 1376629234983365825}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8692688520719355600 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1461304994638716399, guid: d8ae3db61cb9d8f4b9a724a050d92b8b, type: 3}
+  m_PrefabInstance: {fileID: 1376629234983365825}
+  m_PrefabAsset: {fileID: 0}

@@ -13,9 +13,6 @@ public class PlayerController_WASD : PlayerController
     [SerializeField] private float refreshDistance = 2f;
     [SerializeField] private float directionChangeThreshold = 10f;
 
-    private bool wasMovingWithKeyboard;
-    private Vector3 lastInputDirection;
-
     public override void Enter(CharacterBehaviour_Player InBehaviour)
     {
         if (agent == null)
@@ -44,58 +41,24 @@ public class PlayerController_WASD : PlayerController
         if (input.sqrMagnitude > 1f)
             input.Normalize();
 
-        if (input.sqrMagnitude < 0.01f)
-        {
-            if (wasMovingWithKeyboard)
-            {
-                agent.isStopped = true;
-                agent.ResetPath();
-
-                wasMovingWithKeyboard = false;
-            }
-            return;
-        }
-
         Vector3 forward = movementCamera != null ? movementCamera.forward : InBehaviour.transform.forward;
-
         forward.y = 0f;
         forward.Normalize();
-
-        if (forward.sqrMagnitude < 0.01f)
-            forward = Vector3.forward;
-
         Vector3 right = Vector3.Cross(Vector3.up, forward).normalized;
-
         Vector3 direction = (forward * input.y + right * input.x).normalized;
+        Vector3 velocity = direction * agent.speed;
 
-        agent.isStopped = false;
-
-        bool directionChanged = Vector3.Angle(lastInputDirection, direction) > directionChangeThreshold;
-
-        bool destinationReached = !agent.pathPending && agent.hasPath && agent.remainingDistance <= refreshDistance;
-
-        bool needsNewDestination = !wasMovingWithKeyboard || directionChanged || !agent.hasPath || destinationReached;
-
-        if (needsNewDestination)
+        if (InBehaviour.isSprinting)
         {
-            Vector3 destination = InBehaviour.transform.position + direction * destinationDistance;
-
-            agent.SetDestination(destination);
-
-            lastInputDirection = direction;
+            velocity *= 2.0f;
         }
+        agent.Move(velocity * Time.deltaTime);
 
-        wasMovingWithKeyboard = true;
+        InBehaviour.RotateToMoveDirectionSmoothed(direction);
+        InBehaviour.ApplyAnimation(velocity);
     }
 
     public override void Exit(CharacterBehaviour_Player InBehaviour)
     {
-        if (agent != null && agent.isOnNavMesh)
-        {
-            agent.isStopped = true;
-            agent.ResetPath();
-        }
-
-        wasMovingWithKeyboard = false;
     }
 }

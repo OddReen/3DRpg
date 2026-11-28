@@ -83,6 +83,8 @@ MonoBehaviour:
   speedMultiplier: 1
   animationSmoothSpeed: 25
   isSprinting: 0
+  movementStanceIndex: 0
+  rotationSpeed: 1
   interactionTarget: {fileID: 0}
   hasWeapon: 0
   isWeaponHolstered: 0
@@ -116,7 +118,9 @@ MonoBehaviour:
     minDistance: 3
     maxDistance: 15
     zoomSmoothTime: 0.15
-  dialogUI: {fileID: 0}
+  socialOptions: {fileID: 0}
+  socialOptionsFrontPanel: {fileID: 0}
+  socialOptionPref: {fileID: 0}
 --- !u!195 &2194764357359956335
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -136,7 +140,7 @@ NavMeshAgent:
   m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 1.75
-  m_BaseOffset: -0.08
+  m_BaseOffset: -0.0235
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 0
 --- !u!136 &4566477455295445660

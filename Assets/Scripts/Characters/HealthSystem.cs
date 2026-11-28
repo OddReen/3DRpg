@@ -20,9 +20,9 @@ public class HealthSystem : MonoBehaviour
         currentBlood -= InAmount;
         if (currentBlood <= 0.0f)
         {
-            characterBehaviour.animator.Play("Die");
+            characterBehaviour.animator.CrossFade("Die", .1f);
             return;
         }
-        characterBehaviour.animator.Play("TakeDamage");
+        characterBehaviour.animator.CrossFade("TakeDamage", .1f);
     }
 }

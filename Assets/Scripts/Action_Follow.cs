@@ -6,8 +6,8 @@ using Unity.Properties;
 using UnityEngine.AI;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "Follow", story: "[Agent] follows [Target]", category: "Action", id: "42ad5e1cecbc28ba8f48a0f48f6cdfcc")]
-public partial class FollowAction : Action
+[NodeDescription(name: "Follow", story: "Follow", category: "Action", id: "42ad5e1cecbc28ba8f48a0f48f6cdfcc")]
+public partial class Action_Follow : Action
 {
     [SerializeReference] public BlackboardVariable<GameObject> Self;
     [SerializeReference] public BlackboardVariable<NavMeshAgent> Agent;

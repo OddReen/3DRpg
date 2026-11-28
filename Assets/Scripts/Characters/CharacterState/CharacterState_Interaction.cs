@@ -32,7 +32,8 @@ public class CharacterState_Interaction : CharacterState
 
         List<CharacterState> buttonStates = new List<CharacterState>
         {
-            new CharacterState_Follow(InBehaviour.gameObject.transform, 2.0f, 4.0f)
+            new CharacterState_Follow(InBehaviour.gameObject.transform, 2.0f, 4.0f),
+            new CharacterState_Idle()
         };
 
         CharacterBehaviour_Player playerBehaviour = (CharacterBehaviour_Player)InBehaviour;
@@ -40,7 +41,7 @@ public class CharacterState_Interaction : CharacterState
         {
             playerBehaviour.ChangeController(null);
 
-            interactionTarget.GetComponent<CharacterBehaviour_NPC>().animator.Play("Interaction");
+            interactionTarget.GetComponent<CharacterBehaviour_NPC>().animator.CrossFade("Interaction", .1f);
             playerBehaviour.socialOptions.SetActive(true);
             foreach (CharacterState buttonState in buttonStates)
             {
@@ -54,7 +55,7 @@ public class CharacterState_Interaction : CharacterState
             }
         }
 
-        InBehaviour.RotateToMoveDirection();
+        InBehaviour.RotateToMoveDirectionSmoothed(InBehaviour.agent.velocity.normalized);
         interactionTarget.transform.LookAt(InBehaviour.transform);
     }
     public override void Update(CharacterBehaviour InBehaviour)
